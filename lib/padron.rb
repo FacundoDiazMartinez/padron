@@ -11,8 +11,9 @@ require 'net/https'
 
 
 module Padron
-  class Error < StandardError; end
+  class NullOrInvalidAttribute < StandardError; end
 
+  extend self
   mattr_accessor :cuit, :pkey, :cert, :environment, :openssl_bin
   
   def self.root
