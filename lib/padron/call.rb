@@ -67,7 +67,7 @@ module Padron
 	  			personas.map do |persona|
 	  				unless persona[:error_constancia] && persona[:error_constancia].try(:[],:apellido).nil?
 		  				if !persona[:error_constancia].nil?
-					  		{:name 			=> persona[:error_constancia][:apellido],
+					  		{:name 			=> set_name(persona[:error_constancia]),
 				  			:cuit 			=> persona[:error_constancia][:id_persona]}
 				  		else
 					  		{:name 			=> set_name(persona[:datos_generales]),
@@ -83,7 +83,7 @@ module Padron
 		  	end
 
 	  		def set_name(persona)
-	  			return "#{persona[:nombre]} #{persona[:apellido]}"
+	  			return "#{persona.try(:[], :nombre} #{persona.try(:[], :apellido)}"
 	  		end
 	end
 end
