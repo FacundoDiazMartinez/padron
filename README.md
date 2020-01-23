@@ -1,8 +1,6 @@
 # Padron
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/padron`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Gem to interact with ws_sr_padron_a4 web service from A.F.I.P. 
 
 ## Installation
 
@@ -21,18 +19,23 @@ Or install it yourself as:
     $ gem install padron
 
 ## Usage
+Given a document type D.N.I. (length = 8) the get_data method will return all public info about the two posible persons for the given ID.
+ex:
+    Padron::Call.new(id: "36864268").get_data 
+will return public info about document "20368642682" and "27368642687".
 
-TODO: Write usage instructions here
+This's because a given D.N.I can be duplicated, for that reason the gem will build the two possible CUIL/CUIT for that DNI and will return the info.
 
-## Development
+The response has the following structure for each person returned:
+    if the person wasn't registered in AFIP:
+        {name: ..., cuit: ...}
+    if the person was registered in AFIP:
+        {name: ..., cuit: ..., cp: ..., address: ..., city_id: ..., city: ..., locality: ...}
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/padron.
+Bug reports and pull requests are welcome on GitHub at https://github.com/FacundoDiaMartinez/padron.
 
 
 ## License
