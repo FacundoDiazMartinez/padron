@@ -81,7 +81,7 @@ XML
       token: #{certs[0]}
       sign: #{certs[1]}
       YML
-    `echo '#{ yml }' > #{Rails.root}/Padron/#{Padron::AuthData.environment.to_s}_Padron_#{ Padron.cuit }_#{ Time.new.strftime('%Y_%m_%d') }.yml`
+    `echo '#{ yml }' > /tmp/padron_a5_#{Padron.environment.to_s}_Padron_#{ Padron.cuit }_#{ Time.new.strftime('%Y_%m_%d') }.yml`
     end
 
   end
