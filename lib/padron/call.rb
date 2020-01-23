@@ -83,7 +83,7 @@ module Padron
 		  	end
 
 	  		def set_name(persona)
-	  			return "#{persona.try(:[], :nombre} #{persona.try(:[], :apellido)}"
+	  			return "#{persona.try(:[], :nombre)} #{persona.try(:[], :apellido)}"
 	  		end
 	end
 end
